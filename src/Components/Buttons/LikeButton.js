@@ -10,9 +10,8 @@ const LikeButton = ({isActive, children, isLikeButton, handleLikeClick, handleDi
         'btn--highlited': isActive,
     });
 
-    const handleClick = (event) => {
+    const handleClick = event => {
       event.preventDefault();
-        console.log(isLikeButton)
       return isLikeButton && handleLikeClick() || handleDislikeClick();
     };
 
