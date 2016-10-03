@@ -2,8 +2,8 @@ import {handleActions} from 'redux-actions';
 import * as actions from '../Constants/Constants';
 
 const initialState = {
-    likesCount: 0,
-    dislikeCount: 0,
+    likesCount: 5,
+    dislikeCount: 5,
     isLike: false,
     isDislike: false,
 };
@@ -11,17 +11,17 @@ const initialState = {
 const LikesReducer = handleActions({
     [actions.HANDLE_LIKE_CLICK]: state => ({
         ...state,
-        isLike: true,
+        isLike: state.isLike ? false : true,
         isDislike: false,
-        likesCount: 1,
-        dislikeCount: 0,
+        likesCount: state.isLike ? state.likesCount - 1 : state.likesCount + 1,
+        dislikeCount: state.isDislike ? state.dislikeCount - 1 : state.dislikeCount,
     }),
     [actions.HANDLE_DISLIKE_CLICK]: state => ({
         ...state,
         isLike: false,
-        isDislike: true,
-        dislikeCount: 1,
-        likesCount: 0,
+        isDislike: state.isDislike ? false : true,
+        dislikeCount: state.isDislike ? state.dislikeCount - 1 : state.dislikeCount + 1,
+        likesCount: state.isLike ? state.likesCount - 1 : state.likesCount,
     }),
 }, initialState);
 
