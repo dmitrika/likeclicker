@@ -13,13 +13,15 @@ const LikesReducer = handleActions({
         ...state,
         isLike: true,
         isDislike: false,
-        likesCount: state.likesCount + 1,
+        likesCount: 1,
+        dislikeCount: 0,
     }),
     [actions.HANDLE_DISLIKE_CLICK]: state => ({
         ...state,
         isLike: false,
         isDislike: true,
-        dislikeCount: state.dislikeCount + 1,
+        dislikeCount: 1,
+        likesCount: 0,
     }),
 }, initialState);
 
